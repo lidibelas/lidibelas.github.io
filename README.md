@@ -41,10 +41,22 @@ Site acadêmico pessoal de **Lídia Belas**.
 2. Edite `config.js` → `photo:` com o caminho exato (ex: `"images/profile/Profile.jpg"`)
 3. Faça commit — o nome do arquivo tem que bater **exatamente** (maiúsculas/minúsculas)
 
-### Trocar/adicionar foto pessoal (Sobre)
-1. Suba a foto para `images/about/`
-2. Edite `config.js` → `aboutPhoto:` com o caminho exato
-3. `aboutPhoto: ""` (vazio) = a foto some sem deixar espaço vazio
+### Adicionar/tirar fotos do Sobre (galeria)
+1. Suba a foto para `images/about/` (qualquer nome: `minha_foto.jpg`, `aniversario.jpg`, etc.)
+2. Edite `config.js` → `aboutPhotos:` e adicione o caminho da foto:
+   ```
+   aboutPhotos: [
+     "images/about/turma_metalurgia.jpg",
+     "images/about/estudando.jpg",
+     "images/about/aniversario.jpg",
+     "images/about/bingo_lidia.jpg"
+   ]
+   ```
+3. **Para adicionar mais uma foto:** coloque o arquivo em `images/about/` e adicione uma linha `"images/about/NOME.jpg",` dentro do array (a última linha pode ter vírgula ou não)
+4. **Para tirar uma foto:** apague a linha correspondente dentro do array
+5. **Para deixar sem fotos:** `aboutPhotos: []` (array vazio = a coluna de fotos some)
+6. As fotos aparecem empilhadas (uma embaixo da outra) na ordem do array
+7. ⚠️ **Não separe caminhos por vírgula numa linha só** — cada foto precisa estar entre aspas e numa linha própria dentro do array
 
 ### Alterar o texto da seção "Sobre mim"
 **Tudo no `locales/pt.json` — não precisa mexer no HTML.**

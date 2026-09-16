@@ -277,11 +277,11 @@ body {
 .about-layout.no-photo {
   grid-template-columns: 1fr;
 }
-.about-photo { }
+.about-photo { display: flex; flex-direction: column; gap: 16px; }
 .about-photo[hidden] { display: none; }
 .about-photo img {
   width: 100%;
-  max-width: 220px;
+  max-width: 240px;
   border-radius: var(--radius);
   filter: grayscale(15%);
 }

@@ -26,10 +26,18 @@ var SITE_CONFIG = {
   // Foto principal/profissional — aparece na HOME (abertura do site)
   photo: "images/profile/Profile.jpg",  // coloque sua foto em images/profile/ (nome exato do arquivo)
 
-  // Foto pessoal/biográfica — aparece na seção "Sobre"
+  // Fotos pessoais/biográficas — aparecem na seção "Sobre"
   // Use fotos da sua trajetória pessoal: ensino médio, IFBA, infância, etc.
-  // Se vazio "", a foto do "Sobre" é escondida (sem placeholder, sem espaço vazio)
-  aboutPhoto: "images/about/turma_metalurgia.jpg", "images/about/estudando.jpg", "images/about/aniversario.jpg", "images/about/bingo.jpg"// ex: "images/about/ensino-medio.jpg"
+  // Coloque as imagens na pasta images/about/ e liste os caminhos abaixo.
+  // Para ADICIONAR uma foto: coloque o arquivo em images/about/ e adicione uma linha "images/about/NOME.jpg",
+  // Para REMOVER: apague a linha correspondente.
+  // Se o array estiver vazio [], a seção de fotos é escondida.
+  aboutPhotos: [
+    "images/about/turma_metalurgia.jpg",
+    "images/about/estudando.jpg",
+    "images/about/aniversario.jpg",
+    "images/about/bingo_lidia.jpg"
+  ],
 
   // --- Links (vazio = não mostra) ---
   email: "lidiavieirabelas@gmail.com",

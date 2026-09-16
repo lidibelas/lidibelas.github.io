@@ -201,23 +201,56 @@
   // --- About: photo + personal text + affiliation with logo ---
 
   function renderAbout(t) {
-    // Photo — personal/biographical photo (NOT the professional one from the hero)
-    // Uses config.aboutPhoto (images/about/...). If empty or missing, hides gracefully
+    // Photos — personal/biographical photos (NOT the professional one from the hero)
+    // Uses config.aboutPhotos (array of images/about/...). If empty or missing, hides gracefully
     // AND collapses the layout to single column (no empty space on the left).
+    // Legacy fallback: if config.aboutPhoto (string) exists but aboutPhotos doesn't, use it.
     var photoEl = document.getElementById('about-photo');
     var layoutEl = document.querySelector('.about-layout');
-    if (photoEl && config.aboutPhoto) {
-      var img = new Image();
-      img.onload = function () {
-        photoEl.innerHTML = '<img src="' + config.aboutPhoto + '" alt="Lídia Belas" class="about-photo-img">';
+
+    // Normalize: aboutPhotos (array, new) or aboutPhoto (string, legacy)
+    var photoList = [];
+    if (Array.isArray(config.aboutPhotos) && config.aboutPhotos.length > 0) {
+      photoList = config.aboutPhotos;
+    } else if (config.aboutPhoto) {
+      photoList = [config.aboutPhoto];
+    }
+
+    if (photoEl && photoList.length > 0) {
+      // Preload all images, then render the ones that loaded OK
+      var loaded = 0;
+      var ok = 0;
+      var results = [];
+
+      photoList.forEach(function (src, idx) {
+        var img = new Image();
+        img.onload = function () {
+          results[idx] = src;
+          ok++;
+          loaded++;
+          if (loaded === photoList.length) renderPhotos();
+        };
+        img.onerror = function () {
+          loaded++;
+          if (loaded === photoList.length) renderPhotos();
+        };
+        img.src = src;
+      });
+
+      function renderPhotos() {
+        var valid = results.filter(function (s) { return s; });
+        if (valid.length === 0) {
+          photoEl.style.display = 'none';
+          if (layoutEl) layoutEl.classList.add('no-photo');
+          return;
+        }
+        var html = valid.map(function (src) {
+          return '<img src="' + src + '" alt="Lídia Belas" class="about-photo-img">';
+        }).join('');
+        photoEl.innerHTML = html;
         photoEl.style.display = 'block';
         if (layoutEl) layoutEl.classList.remove('no-photo');
-      };
-      img.onerror = function () {
-        photoEl.style.display = 'none';
-        if (layoutEl) layoutEl.classList.add('no-photo');
-      };
-      img.src = config.aboutPhoto;
+      }
     } else if (photoEl) {
       photoEl.style.display = 'none';
       if (layoutEl) layoutEl.classList.add('no-photo');
