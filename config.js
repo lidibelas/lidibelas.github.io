@@ -29,7 +29,7 @@ var SITE_CONFIG = {
   // Foto pessoal/biográfica — aparece na seção "Sobre"
   // Use fotos da sua trajetória pessoal: ensino médio, IFBA, infância, etc.
   // Se vazio "", a foto do "Sobre" é escondida (sem placeholder, sem espaço vazio)
-  aboutPhoto: "",  // ex: "images/about/ensino-medio.jpg"
+  aboutPhoto: "images/about/turma_metalurgia", // ex: "images/about/ensino-medio.jpg"
 
   // --- Links (vazio = não mostra) ---
   email: "lidiavieirabelas@gmail.com",
