@@ -314,24 +314,25 @@
       // Detect if image exists; if not, skip this record entirely
       // (image check happens at render time — if 404, the card is hidden)
       var cardId = 'record-' + i;
-      
+      var rt = function (field) { return t['records.' + i + '.' + field] || r[field] || ''; };
+
       html += '<figure class="' + cls + ' reveal" id="' + cardId + '">';
       html += '<div class="record-image-wrap">';
       if (r.link) {
         html += '<a href="' + r.link + '" target="_blank" rel="noopener">';
       }
-      html += '<img src="' + r.image + '" alt="' + (r.alt || r.title || '') + '" class="record-img" loading="lazy">';
+      html += '<img src="' + r.image + '" alt="' + (rt('alt') || rt('title') || '') + '" class="record-img" loading="lazy">';
       if (r.link) {
         html += '</a>';
       }
       html += '</div>';
       html += '<figcaption class="record-caption">';
-      if (r.title) html += '<div class="record-title">' + r.title + '</div>';
+      if (r.title) html += '<div class="record-title">' + rt('title') + '</div>';
       var meta = '';
-      if (r.context) meta += r.context;
+      if (r.context) meta += rt('context');
       if (r.year) meta += (meta ? ' · ' : '') + r.year;
       if (meta) html += '<div class="record-meta">' + meta + '</div>';
-      if (r.caption) html += '<p class="record-desc">' + r.caption + '</p>';
+      if (r.caption) html += '<p class="record-desc">' + rt('caption') + '</p>';
       html += '</figcaption>';
       html += '</figure>';
     });
