@@ -32,7 +32,7 @@ var SITE_CONFIG = {
   aboutPhoto: "",  // ex: "images/about/ensino-medio.jpg"
 
   // --- Links (vazio = não mostra) ---
-  email: "lidiabelasvieira@gmail.com",
+  email: "lidiavieirabelas@gmail.com",
   lattes: "http://lattes.cnpq.br/5758630474226047",
   lattesId: "5758630474226047",
   orcid: "https://orcid.org/0009-0008-7211-4492",
@@ -48,7 +48,7 @@ var SITE_CONFIG = {
     // Se não existir, o texto aparece normalmente sem imagem quebrada.
     logo: "images/institutions/labhdufba.png",
     // Link oficial do laboratório (vazio = logo não é clicável)
-    url: ""  // TODO: inserir URL oficial do LABHDUFBA quando disponível
+    url: "https://labhdufba.github.io/pt/"  // TODO: inserir URL oficial do LABHDUFBA quando disponível
   },
 
   // --- Formação ---
