@@ -154,32 +154,33 @@
     } else if (heroPhotoEl) {
       heroPhotoEl.style.display = 'none';
     }
-    var html = '';
-    if (config.lattes) html += '<a href="' + config.lattes + '" target="_blank" rel="noopener" class="hero-link">' + (t['hero.lattes'] || 'Lattes') + ' ↗</a>';
-    if (config.orcid) html += '<a href="' + config.orcid + '" target="_blank" rel="noopener" class="hero-link">ORCID ↗</a>';
-    if (config.github) html += '<a href="' + config.github + '" target="_blank" rel="noopener" class="hero-link">GitHub ↗</a>';
-    if (config.email) html += '<a href="mailto:' + config.email + '" class="hero-link">' + (t['hero.email'] || 'E-mail') + ' ↗</a>';
-    container.innerHTML = html;
+    // Links moved to Contact section (footer) — hero stays clean
+    container.innerHTML = '';
   }
 
   // --- About: photo + personal text + affiliation with logo ---
 
   function renderAbout(t) {
     // Photo — personal/biographical photo (NOT the professional one from the hero)
-    // Uses config.aboutPhoto (images/about/...). If empty or missing, hides gracefully.
+    // Uses config.aboutPhoto (images/about/...). If empty or missing, hides gracefully
+    // AND collapses the layout to single column (no empty space on the left).
     var photoEl = document.getElementById('about-photo');
+    var layoutEl = document.querySelector('.about-layout');
     if (photoEl && config.aboutPhoto) {
       var img = new Image();
       img.onload = function () {
         photoEl.innerHTML = '<img src="' + config.aboutPhoto + '" alt="Lídia Belas" class="about-photo-img">';
         photoEl.style.display = 'block';
+        if (layoutEl) layoutEl.classList.remove('no-photo');
       };
       img.onerror = function () {
         photoEl.style.display = 'none';
+        if (layoutEl) layoutEl.classList.add('no-photo');
       };
       img.src = config.aboutPhoto;
     } else if (photoEl) {
       photoEl.style.display = 'none';
+      if (layoutEl) layoutEl.classList.add('no-photo');
     }
 
     // Affiliation block with optional logo

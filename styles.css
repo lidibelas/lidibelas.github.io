@@ -267,12 +267,18 @@ body {
 }
 
 /* --- About layout --- */
+/* When about-photo is hidden (display:none), layout collapses to single column */
 .about-layout {
   display: grid;
   grid-template-columns: minmax(180px, 0.8fr) minmax(0, 1.4fr);
   gap: 56px;
   align-items: start;
 }
+.about-layout.no-photo {
+  grid-template-columns: 1fr;
+}
+.about-photo { }
+.about-photo[hidden] { display: none; }
 .about-photo img {
   width: 100%;
   max-width: 220px;
