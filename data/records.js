@@ -20,31 +20,27 @@
    
    Regras:
    - Se a lista estiver vazia [], a seção
-     inteira de Registros ESCODE (nada aparece).
+     inteira de Registros ESCONDE (nada aparece).
    - Não invente registros. Só inclua fotos reais.
    - O campo "alt" é obrigatório (acessibilidade).
    - O campo "link" é opcional.
    ============================================ */
 
 var SITE_RECORDS = [
-  // {
-  //  
+  {
+    image: "images/records/2_semana_de_humanidades_digitais.jpg",
+    title: "2ª Semana de Humanidades Digitais da UFBA",
+    year: "2026",
+    context: "Laboratório de Humanidades Digitais da UFBA",
+    caption: "Encerramento da 2ª Semana de Humanidades Digitais da UFBA, evento do qual participei também na organização.",
+    alt: "Lídia Belas participando da 2ª Semana de Humanidades Digitais da UFBA, evento que ajudou a organizar",
+  },
+  {
     image: "images/records/Apresentacao_congresso_ufba_2025.jpg",
     title: "Apresentação no Congresso UFBA",
     year: "2025",
     context: "Universidade Federal da Bahia",
-    caption: "Apresentação oral do trabalho “Mas você é Índio mesmo?”",
+    caption: "Apresentação oral do trabalho \u201CMas você é Índio mesmo?\u201D",
     alt: "Lídia Belas e Ludmilla Gonçalves durante apresentação no congresso UFBA",
-  // },
+  },
 ];
-[
-{
-  image: "images/records/2_semana_de_humanidades_digitais.jpg",
-  title: "2ª Semana de Humanidades Digitais da UFBA",
-  year: "2026",
-  context: "Laboratório de Humanidades Digitais da UFBA",
-  caption: "Encerramento da 2ª Semana de Humanidades Digitais da UFBA, evento do qual participei também na organização.",
-  alt: "Lídia Belas participando da 2ª Semana de Humanidades Digitais da UFBA, evento que ajudou a organizar",
-
-}
-   ]

@@ -23,7 +23,7 @@ var SITE_CONFIG = {
 
   // --- Identidade ---
   name: "Lídia Belas",
-  photo: "images/profile/profile.jpg",  // coloque sua foto em images/profile/profile.jpg
+  photo: "images/profile/Profile.jpg",  // coloque sua foto em images/profile/ (nome exato do arquivo)
 
   // --- Links (vazio = não mostra) ---
   email: "lidiabelasvieira@gmail.com",
