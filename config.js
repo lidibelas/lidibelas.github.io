@@ -47,9 +47,9 @@ var SITE_CONFIG = {
   // - Para remover: apague o bloco { ... } correspondente
   affiliations: [
     {
-      role: "Graduanda em Antropologia",
-      lab: "Universidade Federal da Bahia",
-      labShort: "UFBA",
+      role: "Graduanda em Ciências Sociais — Antropologia",
+      lab: "Faculdade de Filosofia e Ciências Humanas · UFBA",
+      labShort: "FFCH/UFBA",
       period: "2023 — atual",
       logo: "images/institutions/logo_1.png",
       url: "https://www.ufba.br/"
@@ -66,9 +66,9 @@ var SITE_CONFIG = {
 
   // --- Formação ---
   education: {
-    degree: "Graduanda em Antropologia",
-    institution: "Universidade Federal da Bahia (UFBA)",
-    detail: "Bacharelado em Antropologia",
+    degree: "Graduanda em Ciências Sociais — Antropologia",
+    institution: "Faculdade de Filosofia e Ciências Humanas · UFBA",
+    detail: "Bacharelado em Ciências Sociais — Antropologia",
     period: "2023 — atualmente"
   },
 
