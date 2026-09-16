@@ -27,14 +27,13 @@
    ============================================ */
 
 var SITE_RECORDS = [
-  // Exemplo (descomente e edite quando tiver registros reais):
   // {
-  //   image: "images/records/evento-x.jpg",
-  //   title: "Mesa [nome do evento]",
-  //   year: "2026",
-  //   context: "UFBA",
-  //   caption: "Breve descrição da minha participação.",
-  //   alt: "Lídia Belas apresentando trabalho na mesa X",
-  //   link: ""  // opcional: URL do evento
+  //  
+    image: "images/records/Apresentacao_congresso_ufba_2025.jpg",
+    title: "Apresentação no Congresso UFBA",
+    year: "2025",
+    context: "Universidade Federal da Bahia",
+    caption: "Apresentação oral do trabalho “Mas você é Índio mesmo?”",
+    alt: "Lídia Belas e Ludmilla Gonçalves durante apresentação no congresso UFBA",
   // },
 ];
