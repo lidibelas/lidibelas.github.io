@@ -32,19 +32,52 @@
     return DEFAULT_LANG;
   }
 
+  // --- Translation cascade ---
+  // When loading a non-default language, we first load the default (pt)
+  // then overlay the target language on top. Missing keys in en/es
+  // automatically fall back to pt — so Lídia only needs to edit pt.json
+  // and the site works in all languages (pt text shows until she translates).
+  var defaultTranslations = {};
+
   function loadTranslations(lang) {
-    return fetch('locales/' + lang + '.json')
-      .then(function (r) {
-        if (!r.ok) throw new Error(r.status);
-        return r.json();
-      })
-      .catch(function (e) {
-        console.warn('Não carregou locales/' + lang + '.json:', e);
-        if (lang !== DEFAULT_LANG) {
-          return fetch('locales/' + DEFAULT_LANG + '.json').then(function (r) { return r.json(); });
-        }
-        return {};
-      });
+    if (lang === DEFAULT_LANG) {
+      return fetch('locales/' + lang + '.json')
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          return r.json();
+        })
+        .then(function (data) {
+          defaultTranslations = data;
+          return data;
+        })
+        .catch(function (e) {
+          console.warn('Não carregou locales/' + lang + '.json:', e);
+          return {};
+        });
+    }
+    // Non-default: load default first, then overlay target
+    var p1 = (Object.keys(defaultTranslations).length > 0)
+      ? Promise.resolve(defaultTranslations)
+      : fetch('locales/' + DEFAULT_LANG + '.json').then(function (r) { return r.json(); }).catch(function () { return {}; });
+    return p1.then(function (base) {
+      defaultTranslations = base;
+      return fetch('locales/' + lang + '.json')
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          return r.json();
+        })
+        .then(function (target) {
+          // Merge: base (pt) + target (en/es) — target wins for keys it has
+          var merged = {};
+          Object.keys(base).forEach(function (k) { merged[k] = base[k]; });
+          Object.keys(target).forEach(function (k) { merged[k] = target[k]; });
+          return merged;
+        })
+        .catch(function (e) {
+          console.warn('Não carregou locales/' + lang + '.json, usando ' + DEFAULT_LANG + ':', e);
+          return base; // fallback to default entirely
+        });
+    });
   }
 
   function applyTranslations(t) {
@@ -58,6 +91,17 @@
       btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
     });
     renderAll(t);
+  }
+
+  // --- Fallback cascade: if a key is missing in the current language,
+  //     fall back to the default language (pt), then to a literal fallback.
+  //     This means Lídia only NEEDS to edit pt.json — if en.json/es.json
+  //     don't have a key yet, the site still works (showing pt text).
+  function t(key, fallback) {
+    if (translations[key] !== undefined) return translations[key];
+    if (key === undefined) return '';
+    // Will be filled by loadTranslations cascade below
+    return (fallback !== undefined) ? fallback : '';
   }
 
   function langCode(lang) {
@@ -84,7 +128,7 @@
   function renderAll(t) {
     renderNav(t);
     renderLangSwitcher();
-    renderHeroLinks(t);
+    renderHeroPhoto();
     renderAbout(t);
     renderResearchKeywords(t);
     renderTimeline(t);
@@ -135,10 +179,7 @@
     });
   }
 
-  function renderHeroLinks(t) {
-    var container = document.getElementById('hero-links');
-    if (!container || !config) return;
-
+  function renderHeroPhoto() {
     // --- Hero photo (professional photo, right side) ---
     var heroPhotoEl = document.getElementById('hero-photo');
     if (heroPhotoEl && config.photo) {
@@ -154,8 +195,7 @@
     } else if (heroPhotoEl) {
       heroPhotoEl.style.display = 'none';
     }
-    // Links moved to Contact section (footer) — hero stays clean
-    container.innerHTML = '';
+    // Links were moved to Contact section (footer) — hero stays clean
   }
 
   // --- About: photo + personal text + affiliation with logo ---
