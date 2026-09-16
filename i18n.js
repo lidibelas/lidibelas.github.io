@@ -138,6 +138,22 @@
   function renderHeroLinks(t) {
     var container = document.getElementById('hero-links');
     if (!container || !config) return;
+
+    // --- Hero photo (professional photo, right side) ---
+    var heroPhotoEl = document.getElementById('hero-photo');
+    if (heroPhotoEl && config.photo) {
+      var heroImg = new Image();
+      heroImg.onload = function () {
+        heroPhotoEl.innerHTML = '<img src="' + config.photo + '" alt="Lídia Belas" class="hero-photo-img">';
+        heroPhotoEl.style.display = 'block';
+      };
+      heroImg.onerror = function () {
+        heroPhotoEl.style.display = 'none';
+      };
+      heroImg.src = config.photo;
+    } else if (heroPhotoEl) {
+      heroPhotoEl.style.display = 'none';
+    }
     var html = '';
     if (config.lattes) html += '<a href="' + config.lattes + '" target="_blank" rel="noopener" class="hero-link">' + (t['hero.lattes'] || 'Lattes') + ' ↗</a>';
     if (config.orcid) html += '<a href="' + config.orcid + '" target="_blank" rel="noopener" class="hero-link">ORCID ↗</a>';
@@ -149,18 +165,19 @@
   // --- About: photo + personal text + affiliation with logo ---
 
   function renderAbout(t) {
-    // Photo — detect existence, hide gracefully if not present
+    // Photo — personal/biographical photo (NOT the professional one from the hero)
+    // Uses config.aboutPhoto (images/about/...). If empty or missing, hides gracefully.
     var photoEl = document.getElementById('about-photo');
-    if (photoEl && config.photo) {
+    if (photoEl && config.aboutPhoto) {
       var img = new Image();
       img.onload = function () {
-        photoEl.innerHTML = '<img src="' + config.photo + '" alt="Lídia Belas" class="about-photo-img">';
+        photoEl.innerHTML = '<img src="' + config.aboutPhoto + '" alt="Lídia Belas" class="about-photo-img">';
         photoEl.style.display = 'block';
       };
       img.onerror = function () {
         photoEl.style.display = 'none';
       };
-      img.src = config.photo;
+      img.src = config.aboutPhoto;
     } else if (photoEl) {
       photoEl.style.display = 'none';
     }

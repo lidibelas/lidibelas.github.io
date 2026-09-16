@@ -146,6 +146,26 @@ body {
   position: relative;
   z-index: 1;
 }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 56px;
+  align-items: center;
+}
+.hero-content {
+  min-width: 0;
+}
+.hero-photo {
+  flex-shrink: 0;
+}
+.hero-photo-img {
+  width: 280px;
+  max-width: 280px;
+  border-radius: var(--radius);
+  filter: grayscale(10%);
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+}
 .hero-line {
   width: 48px;
   height: 2px;
@@ -624,6 +644,14 @@ body {
   .site-nav { gap: 12px; font-size: 12px; }
   .lang-switcher { align-self: flex-end; }
   .hero { padding: 64px 0 56px; }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .hero-photo-img {
+    width: 200px;
+    max-width: 60vw;
+  }
   .about-layout {
     grid-template-columns: 1fr;
     gap: 32px;

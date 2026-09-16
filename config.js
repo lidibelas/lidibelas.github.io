@@ -23,7 +23,13 @@ var SITE_CONFIG = {
 
   // --- Identidade ---
   name: "Lídia Belas",
+  // Foto principal/profissional — aparece na HOME (abertura do site)
   photo: "images/profile/Profile.jpg",  // coloque sua foto em images/profile/ (nome exato do arquivo)
+
+  // Foto pessoal/biográfica — aparece na seção "Sobre"
+  // Use fotos da sua trajetória pessoal: ensino médio, IFBA, infância, etc.
+  // Se vazio "", a foto do "Sobre" é escondida (sem placeholder, sem espaço vazio)
+  aboutPhoto: "",  // ex: "images/about/ensino-medio.jpg"
 
   // --- Links (vazio = não mostra) ---
   email: "lidiabelasvieira@gmail.com",

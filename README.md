@@ -8,22 +8,34 @@ Site acadêmico pessoal de **Lídia Belas**.
 ## Estrutura
 
 ```
-├── config.js                 ← DADOS GLOBAIS (nome, links, Lattes, ORCID, e-mail, idiomas, logo LABHDUFBA)
+├── config.js                 ← DADOS GLOBAIS (nome, foto, links, Lattes, ORCID, e-mail, idiomas)
 ├── data/content.js           ← CONTEÚDO (trajetória, projetos, métodos, ferramentas, publicações)
 ├── data/records.js           ← REGISTROS (fotos de eventos, mesas, apresentações)
-├── data/lattes_cache.json    ← CACHE do Lattes (gerado por script, não editar à mão)
 ├── locales/pt.json           ← Textos PT
 ├── locales/en.json           ← Textos EN
 ├── locales/es.json           ← Textos ES
 ├── index.html                ← Estrutura (raramente editar)
 ├── styles.css                ← Visual (cores no bloco :root)
 ├── i18n.js                   ← Sistema de idiomas (não editar)
-├── scripts/lattes_export.py  ← Script para extrair dados do Lattes
-├── images/profile/           ← SUA FOTO PRINCIPAL (profile.jpg)
-├── images/records/           ← FOTOS DE EVENTOS E APRESENTAÇÕES
-├── images/institutions/      ← LOGO DO LABHDUFBA (labhdufba.png)
-└── .github/workflows/        ← Automação
+├── images/profile/           ← FOTO PROFISSIONAL (home)
+├── images/about/             ← FOTOS PESSOAIS/BIOGRÁFICAS (seção Sobre)
+├── images/records/           ← FOTOS ACADÊMICAS (seção Registros)
+├── images/institutions/      ← LOGO DO LABHDUFBA
+└── .nojekyll                 ← Diz ao GitHub Pages para não processar com Jekyll
 ```
+
+---
+
+## As 4 categorias de imagens
+
+| Pasta | O que vai aqui | Onde aparece no site |
+|---|---|---|
+| `images/profile/` | **Foto principal/profissional** — sua foto de apresentação | **Home** (abertura do site, à direita do nome) |
+| `images/about/` | **Fotos pessoais e biográficas** — ensino médio, IFBA, infância, trajetória de vida | **Sobre** (ao lado do texto biográfico) |
+| `images/records/` | **Fotos acadêmicas** — congressos, mesas, apresentações, eventos do LABHDUFBA | **Registros** (seção "Em espaços acadêmicos") |
+| `images/institutions/` | **Logos institucionais** — logo do LABHDUFBA | **Vínculo institucional** (dentro da seção Sobre) |
+
+**Regra fundamental:** NÃO misturar as categorias. Fotos acadêmicas vão só em `records/`. Fotos pessoais vão só em `about/`. A foto profissional vai só em `profile/`.
 
 ---
 
@@ -47,41 +59,53 @@ Site acadêmico pessoal de **Lídia Belas**.
 O mesmo `config.js` centraliza: e-mail, Lattes, ORCID, GitHub e vínculo institucional.
 Troque qualquer um deles no mesmo arquivo, sem editar HTML.
 
-### Trocar minha foto principal
-1. Renomeie sua foto para `profile.jpg`
-2. Suba para a pasta `images/profile/` (pelo GitHub: "Add file" → "Upload files")
-3. Faça commit
-4. A foto aparece automaticamente
-
-### Adicionar uma foto de evento (registro)
-1. Suba a foto para `images/records/` (ex: `mesa-seminario-2026.jpg`)
-2. Abra `data/records.js`
-3. Copie um bloco ` { ... }` e preencha:
+### Trocar a foto principal (Home)
+1. Suba sua foto para `images/profile/` (pelo GitHub: "Add file" → "Upload files")
+2. Abra `config.js` e ajuste o nome do arquivo em `photo:`:
+   ```js
+   photo: "images/profile/Profile.jpg",
    ```
+3. O nome do arquivo tem que bater **exatamente** (maiúsculas/minúsculas)
+4. Faça commit — a foto aparece na home automaticamente
+
+### Trocar/adicionar foto pessoal (Sobre)
+1. Suba a foto para `images/about/` (ex: `images/about/ensino-medio.jpg`)
+2. Abra `config.js` e ajuste `aboutPhoto:`:
+   ```js
+   aboutPhoto: "images/about/ensino-medio.jpg",
+   ```
+3. Faça commit — a foto aparece na seção Sobre
+4. Se deixar `aboutPhoto: ""` (vazio), **a foto some** sem deixar espaço vazio
+5. Use fotos que contem sua trajetória pessoal: ensino médio, IFBA, infância, etc.
+
+### Adicionar uma foto acadêmica (Registro)
+1. Suba a foto para `images/records/` (ex: `mesa-seminario-2025.jpg`)
+2. Abra `data/records.js`
+3. Copie um bloco `{ ... }` e preencha:
+   ```js
    {
-     image: "images/records/mesa-seminario-2026.jpg",
+     image: "images/records/mesa-seminario-2025.jpg",
      title: "Nome da mesa ou evento",
-     year: "2026",
+     year: "2025",
      context: "UFBA",
      caption: "Breve descrição da minha participação.",
      alt: "Lídia Belas apresentando na mesa X",
      link: ""  // opcional: URL do evento
    },
    ```
-4. Faça commit
-5. A foto aparece automaticamente
+4. Faça commit — a foto aparece automaticamente
 
-### Alterar a legenda de um registro
-→ Edite o campo `caption` no bloco correspondente em `data/records.js`
+### Alterar a legenda ou ano de um registro
+→ Edite o campo `caption` ou `year` no bloco correspondente em `data/records.js`
+→ Faça commit — o site atualiza automaticamente
 
 ### Remover um registro
-→ Apague o bloco ` { ... }` correspondente em `data/records.js`
+→ Apague o bloco `{ ... }` correspondente em `data/records.js`
 
 ### Trocar a logo do LABHDUFBA
 1. Renomeie a logo para `labhdufba.png`
 2. Suba para `images/institutions/`
-3. Faça commit
-4. A logo aparece no bloco de vínculo institucional
+3. Faça commit — a logo aparece no bloco de vínculo institucional
 
 ### Alterar o link da logo do LABHDUFBA
 → Edite `config.js` → `affiliation.url` (vazio = não é clicável)
@@ -98,13 +122,6 @@ Troque qualquer um deles no mesmo arquivo, sem editar HTML.
 ### Esconder um idioma
 → Edite `config.js` → remover do array `languages.active`
 
-### Adicionar um idioma (ex: chinês)
-1. Crie `locales/zh.json` (copie de `pt.json` e traduz)
-2. Adicione `"zh"` em `config.js` → `languages.active`
-
-### Atualizar dados do Lattes
-→ `python3 scripts/lattes_export.py`
-
 ---
 
 ## Regras do site
@@ -118,28 +135,55 @@ Troque qualquer um deles no mesmo arquivo, sem editar HTML.
 
 ---
 
-## Lattes
+## Como saber se minha alteração foi publicada
 
-O Lattes **não tem API pública** e exige reCAPTCHA. Sincronização 100% automática não é confiável.
+O site é publicado pelo **GitHub Pages** a cada commit na branch `main`.
+Não há build step — é HTML/CSS/JS puro. O deploy é automático.
 
-**Solução implementada:**
+### Onde verificar no GitHub
 
-1. Script Python (`scripts/lattes_export.py`) que abre o Lattes no navegador
-2. Você resolve o CAPTCHA manualmente
-3. O script extrai: formação, atuação, projetos, produções
-4. Gera `data/lattes_cache.json`
-5. Você faz commit e push
-6. O site usa o cache automaticamente
+1. Vá em: **github.com/lidibelas/lidibelas.github.io**
+2. Clique na aba **"Actions"** (ao lado de "Code")
+3. Se houver um workflow rodando, aparece um círculo amarelo girando
+4. Quando terminar, aparece um check verde ✓
+5. O site está atualizado
 
-**Alternativa sem Selenium:** exporte o XML do Lattes (Download > XML) e rode:
-```
-python3 scripts/lattes_export.py arquivo.xml
-```
+### Se não houver aba "Actions"
 
-**Segurança:**
-- Se a extração falhar, o cache anterior é preservado
-- Se o cache estiver vazio, o site não publica vazio
-- O workflow do GitHub valida o cache em cada push
+O GitHub Pages pode não ter workflow configurado (usa deploy nativo):
+1. Vá em **Settings** → **Pages** (menu lateral esquerdo)
+2. Em "Build and deployment" → "Source" deve estar **"Deploy from a branch"**
+3. Em "Branch" deve estar **main** / **/(root)**
+4. O tempo médio de deploy é **1–2 minutos** após o commit
+5. Aparece um link verde "Your site is live" quando terminou
+
+### Passo a passo para conferir
+
+1. Faça o commit da sua alteração pelo GitHub (web ou celular)
+2. Aguarde 1–2 minutos
+3. Abra https://lidibelas.github.io
+4. Se a mudança não apareceu, **force o reload**:
+   - No computador: `Ctrl + Shift + R` (ou `Cmd + Shift + R` no Mac)
+   - No celular: limpe a aba e abra de novo, ou abra em aba anônima
+5. Se ainda não apareceu, vá na aba **Actions** e veja se o deploy terminou
+6. Se o deploy falhou (X vermelho), clique nele para ver o erro
+
+### Por que minha alteração pode não aparecer
+
+| Causa | Como resolver |
+|---|---|
+| **Cache do navegador** | Force reload: `Ctrl + Shift + R` ou aba anônima |
+| **Deploy ainda rodando** | Aguarde 1–2 minutos após o commit |
+| **Deploy falhou** | Aba Actions → clique no X vermelho → veja o erro |
+| **Sintaxe quebrada em records.js** | O arquivo precisa ser um array JS válido `var SITE_RECORDS = [...]` |
+| **Nome de imagem errado** | Linux é case-sensitive: `Profile.jpg` ≠ `profile.jpg` |
+| **Commit na branch errada** | O commit tem que ser na branch `main` |
+
+### Tempo de propagação
+
+- Commit → deploy: **1–2 minutos**
+- Cache do CDN do GitHub: **até 10 minutos** (raro, mas pode acontecer)
+- Se depois de 10 minutos + reload forçado não apareceu, há um problema real
 
 ---
 
@@ -158,9 +202,10 @@ Para esconder: remover do array. Para mudar padrão: trocar `languages.default`.
 
 ```
 images/
-├── profile/         ← foto principal (profile.jpg)
-├── records/         ← fotos de eventos e apresentações
-└── institutions/    ← logo do LABHDUFBA (labhdufba.png)
+├── profile/         ← foto principal/profissional (home)
+├── about/           ← fotos pessoais/biográficas (seção Sobre)
+├── records/         ← fotos acadêmicas (eventos, congressos, apresentações)
+└── institutions/    ← logo do LABHDUFBA
 ```
 
 Cada pasta tem um `.gitkeep` para existir no Git mesmo sem imagens.
@@ -170,7 +215,7 @@ Cada pasta tem um `.gitkeep` para existir no Git mesmo sem imagens.
 ## Publicação
 
 O site é publicado automaticamente pelo GitHub Pages a cada push na `main`.
-HTML/CSS/JS puro, sem build step.
+HTML/CSS/JS puro, sem build step. Não é preciso rodar nenhum comando.
 
 ---
 
