@@ -26,7 +26,7 @@ var SITE_CONFIG = {
   photo: "images/profile/profile.jpg",  // coloque sua foto em images/profile/profile.jpg
 
   // --- Links (vazio = não mostra) ---
-  email: "",           // TODO: inserir e-mail de contato quando disponível
+  email: "lidiabelasvieira@gmail.com",
   lattes: "http://lattes.cnpq.br/5758630474226047",
   lattesId: "5758630474226047",
   orcid: "https://orcid.org/0009-0008-7211-4492",
@@ -47,10 +47,10 @@ var SITE_CONFIG = {
 
   // --- Formação ---
   education: {
-    degree: "Ciências Sociais",
+    degree: "Graduanda em Antropologia",
     institution: "Universidade Federal da Bahia (UFBA)",
     detail: "Bacharelado em Antropologia",
-    period: "2023 — atual"
+    period: "2023 — atualmente"
   },
 
   // --- Agenda de pesquisa (não é o PIBIC, é sua agenda pessoal) ---

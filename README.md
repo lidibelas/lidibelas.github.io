@@ -32,6 +32,21 @@ Site acadêmico pessoal de **Lídia Belas**.
 ### Dados pessoais (nome, e-mail, links)
 → Edite `config.js`
 
+**Como trocar o e-mail de contato:**
+1. Abra o arquivo `config.js`
+2. Na linha `email:`, troque o endereço entre aspas:
+   ```js
+   email: "seu.novo.email@gmail.com",
+   ```
+3. Faça commit e push — o site atualiza automaticamente
+4. O e-mail aparece em dois lugares:
+   - **Botão "E-mail" na home** (ao lado de Lattes, ORCID, GitHub)
+   - **Seção "Contato"** no final da página (com link `mailto:`)
+5. Se deixar `email: ""` (vazio), **ambos desaparecem** — sem placeholder, sem "TODO", sem campo vazio
+
+O mesmo `config.js` centraliza: e-mail, Lattes, ORCID, GitHub e vínculo institucional.
+Troque qualquer um deles no mesmo arquivo, sem editar HTML.
+
 ### Trocar minha foto principal
 1. Renomeie sua foto para `profile.jpg`
 2. Suba para a pasta `images/profile/` (pelo GitHub: "Add file" → "Upload files")

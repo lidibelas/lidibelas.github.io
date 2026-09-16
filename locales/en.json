@@ -1,9 +1,7 @@
 {
   "meta.title": "Lídia Belas — Researcher · Digital Anthropology, Gender and Digital Cultures",
   "meta.description": "Lídia Belas — undergraduate in Social Sciences/UFBA, PIBIC researcher at LABHDUFBA. Research on online misogyny, digital games, gender and technology.",
-
   "skipToContent": "Skip to content",
-
   "nav.about": "About",
   "nav.research": "Research",
   "nav.trajectory": "Trajectory",
@@ -12,48 +10,38 @@
   "nav.publications": "Publications",
   "nav.methods": "Methods",
   "nav.contact": "Contact",
-
   "hero.eyebrow": "Anthropology · Gender · Digital Cultures",
   "hero.subtitle": "Early-career researcher · Digital Humanities · UFBA",
   "hero.research": "Online misogyny in digital games and gamer communities, from an anthropological approach.",
   "hero.lattes": "Lattes",
   "hero.email": "Email",
-
   "about.label": "About",
-  "about.p1": "I am an undergraduate student in Social Sciences at the Federal University of Bahia (UFBA), in the bachelor's program in Anthropology. My interest in the Humanities, however, began before university. I grew up in a family of teachers in the field and, especially from high school onward, I realized that this was where I wanted to build my path.",
+  "about.p1": "I am an undergraduate student in Anthropology at the Federal University of Bahia (UFBA). My interest in the Humanities, however, began before university. I grew up in a family of teachers in the field and, especially from high school onwards, I realized that this was the field where I wanted to build my career.",
   "about.p2": "A particularly important experience in this journey was my time at the Federal Institute of Education, Science and Technology of Bahia (IFBA), Simões Filho campus, where I attended high school integrated with a technical course in Metallurgy. I completed high school but not the technical course, due to disruptions caused by the Covid-19 pandemic. Nonetheless, I consider my time at IFBA a fundamental part of my education, both for the experiences and for the people and relationships I built there.",
   "about.p3": "My current interest in games and digital cultures also stems from a personal experience. I have been playing League of Legends since 2020, and my experience as a woman in a competitive gaming environment was marked by various situations of hostility and by the recurring perception that this space did not always recognize me as someone who belonged there. These experiences helped transform an everyday lived experience into a research question.",
   "about.p4": "It is from these experiences that I have been building questions about gender, technology, sociability, belonging and conflict in digital environments, especially in games and gamer communities.",
   "about.affiliationLabel": "Institutional affiliation",
-
   "research.label": "Research agenda",
   "research.focus": "My main focus currently is online misogyny in games and gamer communities, investigated through an anthropological approach that articulates research in digital environments and corpus exploration.",
-
   "trajectory.label": "Trajectory",
-  "trajectory.ufba.title": "Social Sciences · UFBA",
-  "trajectory.ufba.desc": "Undergraduate studies in Social Sciences, bachelor's in Anthropology.",
+  "trajectory.ufba.title": "Anthropology · UFBA",
+  "trajectory.ufba.desc": "Undergraduate studies in Anthropology, Federal University of Bahia.",
   "trajectory.labhd.title": "LABHDUFBA",
   "trajectory.labhd.desc": "Research fellow.",
   "trajectory.pibic2025.title": "PIBIC — Health disinformation, digital sociology, and political polarization in Brazil",
   "trajectory.pibic2025.desc": "Research project developed at LABHDUFBA/UFBA.",
   "trajectory.pibic2026.title": "New PIBIC project",
   "trajectory.pibic2026.desc": "Title, topic and description to be provided.",
-
   "records.label": "In academic spaces",
-
   "projects.label": "Projects",
   "projects.desinformacao-saude.title": "PIBIC — Health disinformation, digital sociology, and political polarization in Brazil",
   "projects.desinformacao-saude.desc": "Research project on health disinformation, digital sociology, and political polarization, developed at LABHDUFBA/UFBA.",
-
   "publications.label": "Publications",
   "publications.view": "View publication",
-
   "methods.label": "Methods & tools",
   "methods.approaches": "Methods and approaches",
   "methods.tools": "Tools",
-
   "contact.label": "Contact",
   "contact.intro": "For collaborations, academic guidance, or research conversations:",
-
   "footer.backTop": "↑ top"
 }

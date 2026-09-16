@@ -1,9 +1,7 @@
 {
   "meta.title": "Lídia Belas — Pesquisadora · Antropologia Digital, Gênero e Culturas Digitais",
   "meta.description": "Lídia Belas — graduanda em Ciências Sociais/UFBA, bolsista PIBIC no LABHDUFBA. Pesquisa misoginia online, jogos digitais, gênero e tecnologia.",
-
   "skipToContent": "Pular para o conteúdo",
-
   "nav.about": "Sobre",
   "nav.research": "Pesquisa",
   "nav.trajectory": "Trajetória",
@@ -12,48 +10,38 @@
   "nav.publications": "Produção",
   "nav.methods": "Métodos",
   "nav.contact": "Contato",
-
   "hero.eyebrow": "Antropologia · Gênero · Culturas Digitais",
   "hero.subtitle": "Pesquisadora em formação · Humanidades Digitais · UFBA",
   "hero.research": "Misoginia online em jogos digitais e comunidades de jogadores, a partir de uma abordagem antropológica.",
   "hero.lattes": "Lattes",
   "hero.email": "E-mail",
-
   "about.label": "Sobre",
-  "about.p1": "Sou graduanda em Ciências Sociais pela Universidade Federal da Bahia (UFBA), no bacharelado em Antropologia. Meu interesse pelas Humanidades, porém, começou antes da universidade. Cresci em uma família de professores da área e, principalmente a partir do ensino médio, fui percebendo que era nesse campo que queria construir minha trajetória.",
+  "about.p1": "Sou graduanda em Antropologia pela Universidade Federal da Bahia (UFBA). Meu interesse pelas Humanidades, porém, começou antes da universidade. Cresci em uma família de professores da área e, principalmente a partir do ensino médio, fui percebendo que era nesse campo que queria construir minha trajetória.",
   "about.p2": "Uma experiência especialmente importante nesse percurso foi minha passagem pelo Instituto Federal de Educação, Ciência e Tecnologia da Bahia (IFBA), campus Simões Filho, onde cursei o ensino médio integrado ao curso técnico em Metalurgia. Concluí o ensino médio, mas não o curso técnico, em razão das interrupções provocadas pela pandemia de Covid-19. Ainda assim, considero o período no IFBA uma parte fundamental da minha formação, tanto pelas experiências quanto pelas pessoas e relações que construí ali.",
   "about.p3": "Meu interesse atual por jogos e culturas digitais também nasce de uma experiência pessoal. Jogo League of Legends desde 2020, e minha experiência como mulher em um ambiente de jogo competitivo foi marcada por diferentes situações de hostilidade e pela percepção recorrente de que aquele espaço nem sempre me reconhecia como alguém que deveria estar ali. Essas experiências ajudaram a transformar uma vivência cotidiana em uma questão de pesquisa.",
   "about.p4": "É a partir dessas experiências que venho construindo questões sobre gênero, tecnologia, sociabilidade, pertencimento e conflito em ambientes digitais, especialmente em jogos e comunidades de jogadores.",
   "about.affiliationLabel": "Vínculo institucional",
-
   "research.label": "Agenda de pesquisa",
   "research.focus": "Meu foco principal atualmente é a misoginia online em jogos e comunidades de jogadores, investigada a partir de uma abordagem antropológica que articula pesquisa em ambientes digitais e exploração de corpus.",
-
   "trajectory.label": "Trajetória",
-  "trajectory.ufba.title": "Ciências Sociais · UFBA",
-  "trajectory.ufba.desc": "Graduação em Ciências Sociais, bacharelado em Antropologia.",
+  "trajectory.ufba.title": "Antropologia · UFBA",
+  "trajectory.ufba.desc": "Graduação em Antropologia, Universidade Federal da Bahia.",
   "trajectory.labhd.title": "LABHDUFBA",
   "trajectory.labhd.desc": "Bolsista pesquisadora.",
   "trajectory.pibic2025.title": "PIBIC — Desinformação em saúde, sociologia digital e polarização política no Brasil",
   "trajectory.pibic2025.desc": "Projeto de iniciação científica desenvolvido no contexto do LABHDUFBA/UFBA.",
   "trajectory.pibic2026.title": "Novo projeto PIBIC",
   "trajectory.pibic2026.desc": "Título, tema e descrição a serem fornecidos.",
-
   "records.label": "Em espaços acadêmicos",
-
   "projects.label": "Projetos",
   "projects.desinformacao-saude.title": "PIBIC — Desinformação em saúde, sociologia digital e polarização política no Brasil",
   "projects.desinformacao-saude.desc": "Projeto de iniciação científica sobre desinformação em saúde, sociologia digital e polarização política, desenvolvido no LABHDUFBA/UFBA.",
-
   "publications.label": "Produção acadêmica",
   "publications.view": "Ver publicação",
-
   "methods.label": "Métodos & ferramentas",
   "methods.approaches": "Métodos e abordagens",
   "methods.tools": "Ferramentas",
-
   "contact.label": "Contato",
   "contact.intro": "Para colaborações, orientação acadêmica ou conversas sobre pesquisa:",
-
   "footer.backTop": "↑ topo"
 }
