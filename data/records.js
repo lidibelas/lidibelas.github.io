@@ -40,7 +40,7 @@ var SITE_RECORDS = [
     title: "Apresentação no Congresso UFBA",
     year: "2025",
     context: "Universidade Federal da Bahia",
-    caption: "Apresentação oral do trabalho \u201CMas você é Índio mesmo?\u201D",
+    caption: "Apresentação oral do trabalho \u201CMas você é Índio mesmo?\u201D — Congresso UFBA 2025.",
     alt: "Lídia Belas e Ludmilla Gonçalves durante apresentação no congresso UFBA",
   },
 ];
