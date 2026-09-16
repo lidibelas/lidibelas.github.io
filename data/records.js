@@ -30,7 +30,7 @@ var SITE_RECORDS = [
   {
     image: "images/records/2_semana_de_humanidades_digitais.jpg",
     title: "2ª Semana de Humanidades Digitais da UFBA",
-    year: "2026",
+    year: "2025",
     context: "Laboratório de Humanidades Digitais da UFBA",
     caption: "Encerramento da 2ª Semana de Humanidades Digitais da UFBA, evento do qual participei também na organização.",
     alt: "Lídia Belas participando da 2ª Semana de Humanidades Digitais da UFBA, evento que ajudou a organizar",
