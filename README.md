@@ -51,10 +51,9 @@ Site acadêmico pessoal de **Lídia Belas**.
    email: "seu.novo.email@gmail.com",
    ```
 3. Faça commit e push — o site atualiza automaticamente
-4. O e-mail aparece em dois lugares:
-   - **Botão "E-mail" na home** (ao lado de Lattes, ORCID, GitHub)
-   - **Seção "Contato"** no final da página (com link `mailto:`)
-5. Se deixar `email: ""` (vazio), **ambos desaparecem** — sem placeholder, sem "TODO", sem campo vazio
+4. O e-mail aparece na **seção "Contato"** no final da página (com link `mailto:`)
+5. Junto com o e-mail aparecem os links de **Lattes, ORCID e GitHub** (só no rodapé, não no topo)
+6. Se deixar `email: ""` (vazio), **a seção Contato inteira desaparece** — sem placeholder, sem "TODO", sem campo vazio
 
 O mesmo `config.js` centraliza: e-mail, Lattes, ORCID, GitHub e vínculo institucional.
 Troque qualquer um deles no mesmo arquivo, sem editar HTML.
@@ -111,7 +110,8 @@ Troque qualquer um deles no mesmo arquivo, sem editar HTML.
 → Edite `config.js` → `affiliation.url` (vazio = não é clicável)
 
 ### Adicionar trajetória ou projeto
-→ Edite `data/content.js` + `locales/*.json`
+→ Edite `data/content.js` (estrutura do item) + `locales/pt.json` (textos)
+→ Se quiser traduzir: edite `locales/en.json` e `locales/es.json` (opcional — sem traduzir, mostra PT)
 
 ### Mudar cores ou fontes
 → Edite `styles.css` → bloco `:root`
@@ -195,6 +195,22 @@ PT, EN e ES ativos. Arquitetura permite adicionar qualquer idioma:
 2. Adicionar o código em `config.js` → `languages.active`
 
 Para esconder: remover do array. Para mudar padrão: trocar `languages.default`.
+
+### ⚠️ SISTEMA DE FALLBACK AUTOMÁTICO
+
+**Você só precisa editar `locales/pt.json`.**
+
+Se `en.json` ou `es.json` não tiverem uma chave, o site **automaticamente mostra o texto em português** no lugar. Isso significa que:
+
+- ✅ Você edita `pt.json` → o site funciona em todos os idiomas
+- ✅ Se quiser traduzir para inglês/espanhol, edita `en.json`/`es.json` quando tiver tempo
+- ✅ Se não traduzir, aparece o texto em PT (não quebra, não mostra vazio)
+- ✅ **Nunca** você precisa editar os 3 arquivos ao mesmo tempo
+
+**Fluxo recomendado:**
+1. Edite `pt.json` (sempre)
+2. Se quiser, edite `en.json` e `es.json` (opcional, traduz quando quiser)
+3. Faça commit → site atualiza em todos os idiomas
 
 ---
 
