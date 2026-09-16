@@ -265,8 +265,9 @@
     var container = document.getElementById('research-keywords');
     if (!container || !config.researchAgenda) return;
     var keywords = config.researchAgenda.keywords || [];
-    var html = keywords.map(function (kw) {
-      return '<span class="keyword">' + kw + '</span>';
+    var html = keywords.map(function (kw, i) {
+      var key = 'research.keywords.' + i;
+      return '<span class="keyword">' + (t[key] || kw) + '</span>';
     }).join('');
     container.innerHTML = html;
   }
@@ -362,8 +363,9 @@
     var html = projects.map(function (p) {
       var titleKey = 'projects.' + p.id + '.title';
       var descKey = 'projects.' + p.id + '.desc';
-      var tags = (p.tags || []).map(function (tag) {
-        return '<span class="project-tag">' + tag + '</span>';
+      var tags = (p.tags || []).map(function (tag, i) {
+        var tagKey = 'projects.' + p.id + '.tags.' + i;
+        return '<span class="project-tag">' + (t[tagKey] || tag) + '</span>';
       }).join('');
       return '<div class="project-card reveal">' +
         '<div class="project-period">' + (p.period || '') + '</div>' +
@@ -413,11 +415,17 @@
     var html = '';
     if (methods.length > 0) {
       html += '<div class="method-group"><h3>' + (t['methods.approaches'] || 'Métodos e abordagens') + '</h3>';
-      html += '<ul class="method-list">' + methods.map(function (m) { return '<li>' + m + '</li>'; }).join('') + '</ul></div>';
+      html += '<ul class="method-list">' + methods.map(function (m, i) {
+        var key = 'methods.list.' + i;
+        return '<li>' + (t[key] || m) + '</li>';
+      }).join('') + '</ul></div>';
     }
     if (tools.length > 0) {
       html += '<div class="method-group"><h3>' + (t['methods.tools'] || 'Ferramentas') + '</h3>';
-      html += '<ul class="method-list">' + tools.map(function (tool) { return '<li>' + tool + '</li>'; }).join('') + '</ul></div>';
+      html += '<ul class="method-list">' + tools.map(function (tool, i) {
+        var key = 'tools.list.' + i;
+        return '<li>' + (t[key] || tool) + '</li>';
+      }).join('') + '</ul></div>';
     }
     container.innerHTML = html;
   }
