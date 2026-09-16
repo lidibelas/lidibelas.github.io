@@ -77,6 +77,47 @@ Troque qualquer um deles no mesmo arquivo, sem editar HTML.
 4. Se deixar `aboutPhoto: ""` (vazio), **a foto some** sem deixar espaço vazio
 5. Use fotos que contem sua trajetória pessoal: ensino médio, IFBA, infância, etc.
 
+### Alterar o texto da seção "Sobre mim"
+
+**Tudo está num lugar só: `locales/pt.json`.** Você nunca precisa mexer no HTML.
+
+As chaves que controlam a seção:
+
+```
+"about.label"              → título da seção (atualmente: "Sobre mim")
+"about.p1"                 → 1º parágrafo
+"about.p2"                 → 2º parágrafo
+"about.p3"                 → 3º parágrafo
+"about.p4"                 → 4º parágrafo (fechamento)
+"about.affiliationLabel"   → rótulo acima do vínculo ("Vínculo institucional")
+```
+
+**Como alterar um parágrafo:**
+1. Abra `locales/pt.json`
+2. Encontre a chave do parágrafo (ex: `"about.p2"`)
+3. Troque o texto entre aspas
+4. Faça commit — o GitHub Actions traduz EN/ES automaticamente
+
+**Como mudar o título da seção:**
+1. Abra `locales/pt.json`
+2. Edite `"about.label"` (atualmente: `"Sobre mim"`)
+3. Faça commit — EN e ES traduzem sozinhos ("About me" / "Sobre mí")
+
+**Quer adicionar um 5º parágrafo?**
+1. Adicione no `pt.json`: `"about.p5": "seu novo texto"`
+2. Abra `index.html` e adicione após o `p4` (linha ~82):
+   ```html
+   <p class="prose" data-i18n="about.p5"></p>
+   ```
+3. Faça commit — o workflow traduz `about.p5` para EN/ES automaticamente
+
+**Quer remover um parágrafo?**
+1. Apague a linha da chave no `pt.json` (ex: `"about.p4"`)
+2. Apague a linha `<p ... data-i18n="about.p4"></p>` no `index.html`
+3. Faça commit
+
+> ⚠️ Para os parágrafos (`p1`–`p4`), você precisa editar **só o `pt.json`**. Só precisa mexer no `index.html` se for **adicionar ou remover** um parágrafo (mudar a quantidade).
+
 ### Adicionar uma foto acadêmica (Registro)
 1. Suba a foto para `images/records/` (ex: `mesa-seminario-2025.jpg`)
 2. Abra `data/records.js`
