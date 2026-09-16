@@ -1,0 +1,41 @@
+# ============================================
+# Workflow: Atualizar publicações a partir do Lattes
+# ============================================
+#
+# TODO: Este workflow é um placeholder.
+# Ainda não está ativo (não tem cron nem eventos).
+# 
+# PLANO:
+# Quando implementado, este workflow vai:
+# 1. Acessar o Currículo Lattes (ID: 5758630474226047)
+#    via API pública ou scraping do script Lattes
+# 2. Extrair produções bibliográficas
+# 3. Atualizar data/publications.js
+# 4. Fazer commit automático se houver mudanças
+#
+# Para ativar, descomente o bloco "on:" abaixo
+# e implemente o script de extração.
+# ============================================
+
+name: Update Lattes Publications
+
+# TODO: descomente para ativar
+# on:
+#   schedule:
+#     - cron: '0 0 1 * *'  # todo dia 1 do mês
+#   workflow_dispatch:       # permitir executar manualmente
+
+jobs:
+  update-publications:
+    runs-on: ubuntu-latest
+    if: false  # desativado até implementar
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # TODO: implementar extração do Lattes
+      # - name: Fetch Lattes data
+      #   run: python scripts/fetch_lattes.py 5758630474226047
+
+      - name: Placeholder
+        run: echo "Workflow desativado — aguardando implementação do scraper Lattes"

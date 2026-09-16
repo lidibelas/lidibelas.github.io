@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Página não encontrada · Lídia Belas</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --paper: #faf8f3;
+      --accent: #b8533a;
+      --muted: #6b6964;
+      --rule: #d8d5cc;
+      --font-serif: 'Crimson Pro', Georgia, serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-serif);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 32px;
+    }
+    .container { max-width: 480px; }
+    .code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 48px;
+      margin: 0 0 16px;
+      letter-spacing: -0.03em;
+    }
+    p {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0 0 32px;
+    }
+    a {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid var(--accent);
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+    a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="code">$ error 404</div>
+    <h1>Página não encontrada</h1>
+    <p>A página que você procura não existe ou foi movida.</p>
+    <a href="/">← voltar para o início</a>
+  </div>
+</body>
+</html>
