@@ -60,7 +60,7 @@ var SITE_CONFIG = {
       labShort: "FFCH/UFBA",
       period: "2023 — atual",
       logo: "images/institutions/logo_1.png",
-      url: "https://www.ufba.br/"
+      url: "https://ffch.ufba.br/"
     },
     {
       role: "Bolsista pesquisadora",
