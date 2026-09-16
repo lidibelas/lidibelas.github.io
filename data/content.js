@@ -24,20 +24,6 @@ var SITE_CONTENT = {
   // Se o texto não existir no idioma, usa "title"/"desc" aqui.
   trajectory: [
     {
-      id: "ufba",
-      period: "2023 — atual",
-      title: "Ciências Sociais · UFBA",
-      institution: "Universidade Federal da Bahia",
-      desc: "Graduação em Ciências Sociais, bacharelado em Antropologia."
-    },
-    {
-      id: "labhd",
-      period: "2025 — atual",
-      title: "LABHDUFBA",
-      institution: "Laboratório de Humanidades Digitais da UFBA",
-      desc: "Bolsista pesquisadora."
-    },
-    {
       id: "pibic2025",
       period: "2025 — 2026",
       title: "PIBIC — Desinformação em saúde, sociologia digital e polarização política no Brasil",

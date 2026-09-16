@@ -223,41 +223,59 @@
       if (layoutEl) layoutEl.classList.add('no-photo');
     }
 
-    // Affiliation block with optional logo
+    // Affiliation block — supports multiple institutional links
     var affEl = document.getElementById('about-affiliation');
-    if (affEl && config.affiliation) {
-      var aff = config.affiliation;
-      var html = '<div class="aff-block">';
-      
-      // Logo (if exists)
-      if (aff.logo) {
-        var logoImg = new Image();
-        logoImg.onload = function () {
-          var logoHtml = '';
-          if (aff.url) {
-            logoHtml = '<a href="' + aff.url + '" target="_blank" rel="noopener" class="aff-logo-link">';
-            logoHtml += '<img src="' + aff.logo + '" alt="' + (aff.labShort || 'LABHDUFBA') + '" class="aff-logo">';
-            logoHtml += '</a>';
-          } else {
-            logoHtml = '<img src="' + aff.logo + '" alt="' + (aff.labShort || 'LABHDUFBA') + '" class="aff-logo">';
-          }
-          var logoContainer = document.getElementById('aff-logo-slot');
-          if (logoContainer) logoContainer.innerHTML = logoHtml;
-        };
-        logoImg.onerror = function () {
-          var logoContainer = document.getElementById('aff-logo-slot');
-          if (logoContainer) logoContainer.style.display = 'none';
-        };
-        logoImg.src = aff.logo;
-        html += '<div class="aff-logo-slot" id="aff-logo-slot"></div>';
+    if (affEl) {
+      // Normalize: accept both affiliations (array, new) and affiliation (single, legacy)
+      var affList = [];
+      if (Array.isArray(config.affiliations) && config.affiliations.length > 0) {
+        affList = config.affiliations;
+      } else if (config.affiliation) {
+        affList = [config.affiliation];
       }
 
-      html += '<div class="aff-line">' + (t['about.affiliationLabel'] || 'Vínculo institucional') + '</div>';
-      html += '<div class="aff-role">' + aff.role + '</div>';
-      html += '<div class="aff-lab">' + aff.lab + ' (' + (aff.labShort || '') + ')</div>';
-      html += '<div class="aff-period">' + aff.period + '</div>';
-      html += '</div>';
-      affEl.innerHTML = html;
+      if (affList.length === 0) {
+        affEl.style.display = 'none';
+      } else {
+        var fullHtml = '<div class="aff-line">' + (t['about.affiliationLabel'] || 'Vínculo institucional') + '</div>';
+        affList.forEach(function (aff, idx) {
+          fullHtml += '<div class="aff-block" data-aff="' + idx + '">';
+
+          // Logo (if exists) — each block gets its own slot id
+          var slotId = 'aff-logo-slot-' + idx;
+          if (aff.logo) {
+            fullHtml += '<div class="aff-logo-slot" id="' + slotId + '"></div>';
+            (function (aff, slotId) {
+              var logoImg = new Image();
+              logoImg.onload = function () {
+                var logoHtml = '';
+                if (aff.url) {
+                  logoHtml = '<a href="' + aff.url + '" target="_blank" rel="noopener" class="aff-logo-link">';
+                  logoHtml += '<img src="' + aff.logo + '" alt="' + (aff.labShort || '') + '" class="aff-logo">';
+                  logoHtml += '</a>';
+                } else {
+                  logoHtml = '<img src="' + aff.logo + '" alt="' + (aff.labShort || '') + '" class="aff-logo">';
+                }
+                var container = document.getElementById(slotId);
+                if (container) container.innerHTML = logoHtml;
+              };
+              logoImg.onerror = function () {
+                var container = document.getElementById(slotId);
+                if (container) container.style.display = 'none';
+              };
+              logoImg.src = aff.logo;
+            })(aff, slotId);
+          }
+
+          fullHtml += '<div class="aff-text">';
+          fullHtml += '<div class="aff-role">' + aff.role + '</div>';
+          fullHtml += '<div class="aff-lab">' + aff.lab + (aff.labShort ? ' (' + aff.labShort + ')' : '') + '</div>';
+          fullHtml += '<div class="aff-period">' + aff.period + '</div>';
+          fullHtml += '</div>'; // aff-text
+          fullHtml += '</div>'; // aff-block
+        });
+        affEl.innerHTML = fullHtml;
+      }
     }
   }
 

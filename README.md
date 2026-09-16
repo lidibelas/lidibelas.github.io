@@ -20,7 +20,7 @@ Site acadêmico pessoal de **Lídia Belas**.
 ├── images/profile/           ← Foto principal/profissional (home)
 ├── images/about/             ← Fotos pessoais/biográficas (seção Sobre)
 ├── images/records/           ← Fotos acadêmicas (seção Registros)
-├── images/institutions/      ← Logo do LABHDUFBA
+├── images/institutions/      ← Logos institucionais (logo_1.png, logo_2.png, etc.)
 └── .nojekyll                 ← Diz ao GitHub Pages para não processar com Jekyll
 ```
 
@@ -33,8 +33,8 @@ Site acadêmico pessoal de **Lídia Belas**.
 
 - **E-mail:** troque o valor de `email:` (vazio = seção Contato desaparece)
 - **Lattes, ORCID, GitHub:** troque os valores dos campos correspondentes
-- **Vínculo institucional:** troque os campos de `affiliation` (role, lab, period, url, logo)
-- **Logo do LABHDUFBA:** suba a imagem em `images/institutions/labhdufba.png` (se não existir, só aparece texto)
+- **Vínculos institucionais:** edite o array `affiliations` em `config.js` (pode ter 1 ou vários) — detalhes na seção abaixo
+- **Logos institucionais:** suba as imagens em `images/institutions/` (`logo_1.png`, `logo_2.png`, etc.)
 
 ### Trocar a foto principal (Home)
 1. Suba a foto para `images/profile/`
@@ -67,6 +67,35 @@ Site acadêmico pessoal de **Lídia Belas**.
 > - **Trocar o texto** de um parágrafo que já existe → só `pt.json`
 > - **Adicionar ou remover** um parágrafo (mudar a quantidade) → `pt.json` **+** `index.html`
 > - **Refazer o Sobre inteiro** (mudar estrutura, quantidade de parágrafos, ordem) → `index.html` + `pt.json`
+
+### Vínculos institucionais (adicionar, remover, trocar logos)
+
+→ Tudo no **`config.js`** → bloco `affiliations` (é um array, pode ter 1 ou vários vínculos)
+
+Cada vínculo é um bloco assim:
+```js
+{
+  role: "Bolsista pesquisadora",
+  lab: "Laboratório de Humanidades Digitais da UFBA",
+  labShort: "LABHDUFBA",
+  period: "2025 — atual",
+  logo: "images/institutions/logo_2.png",
+  url: "https://labhdufba.github.io/pt/"
+},
+```
+
+- **Trocar texto de um vínculo:** edita `role`, `lab`, `labShort` ou `period` direto no `config.js` — não precisa traduzir, esses campos não passam pelo `pt.json`
+- **Adicionar um vínculo novo:**
+  1. (Opcional) Suba a logo em `images/institutions/logo_3.png`
+  2. Copie um bloco `{ ... }` inteiro e cole depois do último vínculo
+  3. Troque os campos (`role`, `lab`, `period`, `logo`, `url`)
+  4. Faça commit
+- **Remover um vínculo:** apague o bloco `{ ... }` correspondente + a vírgula antes dele
+- **Trocar uma logo:** suba a nova imagem com o mesmo nome (ex: substitui `logo_1.png`) ou troque o caminho no campo `logo:`
+- **Sem logo:** `logo: ""` (vazio) = aparece só o texto, sem imagem quebrada
+- **Logo não clicável:** `url: ""` (vazio) = logo aparece mas não é clicável
+
+> ℹ️ As logos ficam em `images/institutions/`. Nomes genéricos (`logo_1.png`, `logo_2.png`, `logo_3.png`) facilitam trocar no futuro sem depender de nomes específicos de instituição.
 
 ### Adicionar uma foto acadêmica (Registro)
 1. Suba a foto para `images/records/`
@@ -117,7 +146,7 @@ Site acadêmico pessoal de **Lídia Belas**.
 | `images/profile/` | Foto principal/profissional | Home (abertura do site) |
 | `images/about/` | Fotos pessoais e biográficas (ensino médio, IFBA, infância) | Sobre mim |
 | `images/records/` | Fotos acadêmicas (congressos, mesas, apresentações) | Registros ("Em espaços acadêmicos") |
-| `images/institutions/` | Logos institucionais (LABHDUFBA) | Vínculo institucional (dentro do Sobre) |
+| `images/institutions/` | Logos institucionais (`logo_1.png`, `logo_2.png`, etc.) | Vínculo institucional (dentro do Sobre) |
 
 **Regras:**
 - NÃO misturar as categorias — cada foto na sua pasta

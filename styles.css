@@ -307,6 +307,10 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 16px;
+  padding: 12px 0;
+}
+.aff-block + .aff-block {
+  border-top: 1px solid var(--rule);
 }
 .aff-logo-slot {
   flex-shrink: 0;

@@ -38,18 +38,31 @@ var SITE_CONFIG = {
   orcid: "https://orcid.org/0009-0008-7211-4492",
   github: "https://github.com/lidibelas",
 
-  // --- Vínculo institucional ---
-  affiliation: {
-    role: "Bolsista pesquisadora",
-    lab: "Laboratório de Humanidades Digitais da UFBA",
-    labShort: "LABHDUFBA",
-    period: "2025 — atual",
-    // Logo do laboratório: coloque a imagem em images/institutions/labhdufba.png
-    // Se não existir, o texto aparece normalmente sem imagem quebrada.
-    logo: "images/institutions/labhdufba.png",
-    // Link oficial do laboratório (vazio = logo não é clicável)
-    url: "https://labhdufba.github.io/pt/"  // TODO: inserir URL oficial do LABHDUFBA quando disponível
-  },
+  // --- Vínculos institucionais (pode ter 1 ou vários) ---
+  // Cada vínculo: { role, lab, labShort, period, logo, url }
+  // - logo: coloque a imagem em images/institutions/ (ex: "images/institutions/logo_1.png")
+  // - Se logo vazio ("") ou a imagem não existir, aparece só o texto, sem imagem quebrada
+  // - url vazio ("") = logo não é clicável
+  // - Para adicionar um vínculo: copie um bloco { ... } e coloque depois do último
+  // - Para remover: apague o bloco { ... } correspondente
+  affiliations: [
+    {
+      role: "Graduanda em Antropologia",
+      lab: "Universidade Federal da Bahia",
+      labShort: "UFBA",
+      period: "2023 — atual",
+      logo: "images/institutions/logo_1.png",
+      url: "https://www.ufba.br/"
+    },
+    {
+      role: "Bolsista pesquisadora",
+      lab: "Laboratório de Humanidades Digitais da UFBA",
+      labShort: "LABHDUFBA",
+      period: "2025 — atual",
+      logo: "images/institutions/logo_2.png",
+      url: "https://labhdufba.github.io/pt/"
+    }
+  ],
 
   // --- Formação ---
   education: {
