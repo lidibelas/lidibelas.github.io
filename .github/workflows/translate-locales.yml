@@ -1,0 +1,90 @@
+# ============================================
+# Workflow: Traduzir locales automaticamente
+# ============================================
+#
+# O que este workflow FAZ:
+# - Quando locales/pt.json é alterado (push na main)
+# - Roda scripts/translate_locales.py
+# - O script traduz PT -> EN e PT -> ES via Google Translate (gratuito, sem API key)
+# - Faz commit dos en.json e es.json atualizados
+# - O GitHub Pages publica automaticamente
+#
+# Importante:
+# - Traducoes manuais em en.json/es.json sao PRESERVADAS
+#   (o script so traduz chaves novas ou vazias)
+# - Para forcar re-traducao de tudo: rode manualmente com "force"
+#   (Actions > "Translate Locales" > Run workflow > digite: force)
+# ============================================
+
+name: Translate Locales
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'locales/pt.json'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Sobrescrever traducoes manuais existentes? (digite: force)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Translate PT to EN/ES
+        run: |
+          FORCE_FLAG=""
+          if [ "${{ github.event.inputs.force }}" = "force" ]; then
+            FORCE_FLAG="--force"
+            echo "Modo FORCE: sobrescrevendo todas as traducoes"
+          fi
+          python3 scripts/translate_locales.py $FORCE_FLAG
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add locales/en.json locales/es.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "Nenhuma mudanca nas traducoes."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Traducoes atualizadas."
+          fi
+
+      - name: Commit translations
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "i18n: traduz en.json e es.json automaticamente a partir de pt.json [skip ci]"
+          git push
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "### Translate Locales" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.changes.outputs.changed }}" = "true" ]; then
+            echo "Traducoes de EN e ES foram geradas e commitadas." >> $GITHUB_STEP_SUMMARY
+            echo "O GitHub Pages republicara automaticamente." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "Nenhuma traducao nova necessaria." >> $GITHUB_STEP_SUMMARY
+          fi
