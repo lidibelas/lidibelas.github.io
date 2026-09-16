@@ -42,14 +42,14 @@ var SITE_CONTENT = {
       period: "2025 — 2026",
       title: "PIBIC — Desinformação em saúde, sociologia digital e polarização política no Brasil",
       institution: "LABHDUFBA · UFBA",
-      desc: "Projeto de iniciação científica desenvolvido no contexto do LABHDUFBA/UFBA."
+      desc: "Projeto de iniciação científica desenvolvido no contexto do LABHDUFBA."
     },
     {
       id: "pibic2026",
       period: "2026 — atual",
-      title: "Novo projeto PIBIC",
+      title: "PIBIC — Recuperação semântica e organização de corpus multimodal para arquitetura aplicada às Ciências Sociais",
       institution: "LABHDUFBA · UFBA",
-      desc: "Título, tema e descrição a serem fornecidos."
+      desc: "Projeto de iniciação científica desenvolvido no contexto do LABHDUFBA."
       // NOTA: NÃO inventar título/tema/metodologia.
       // Quando a Lídia fornecer, preencher aqui e em locales/*.json.
     }
@@ -62,8 +62,8 @@ var SITE_CONTENT = {
     {
       id: "desinformacao-saude",
       period: "2025 — 2026",
-      title: "PIBIC — Desinformação em saúde, sociologia digital e polarização política no Brasil",
-      desc: "Projeto de iniciação científica sobre desinformação em saúde, sociologia digital e polarização política, desenvolvido no LABHDUFBA/UFBA.",
+      title: "Ecossistemas multiplataformas e ataques a integridade da informação em saúde: os movimentos antivacina no Brasil",
+      desc: "Projeto de iniciação científica sobre desinformação em saúde, sociologia digital e polarização política, desenvolvido no LABHDUFBA, em parceria com o Instituto de Saúde Coletiva.",
       tags: ["PIBIC", "Desinformação", "Sociologia digital", "LABHDUFBA"]
     }
     // O novo PIBIC 2026 NÃO aparece aqui até que o título real seja fornecido.
