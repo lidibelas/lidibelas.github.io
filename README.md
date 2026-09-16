@@ -14,7 +14,7 @@ Site acadêmico pessoal de **Lídia Belas**.
 ├── locales/pt.json           ← Textos em PT (FONTE — você edita este)
 ├── locales/en.json           ← Textos em EN (traduzido automaticamente)
 ├── locales/es.json           ← Textos em ES (traduzido automaticamente)
-├── index.html                ← Estrutura (só editar para adicionar/remover seções)
+├── index.html                ← Estrutura da página (editar só para adicionar/remover parágrafos ou seções)
 ├── styles.css                ← Visual (cores no bloco :root)
 ├── i18n.js                   ← Sistema de idiomas (não editar)
 ├── images/profile/           ← Foto principal/profissional (home)
@@ -63,7 +63,10 @@ Site acadêmico pessoal de **Lídia Belas**.
 - **Adicionar um 5º parágrafo:** adiciona `"about.p5": "texto"` no `pt.json` **+** adiciona `<p class="prose" data-i18n="about.p5"></p>` no `index.html` após o `p4`
 - **Remover um parágrafo:** apaga a chave no `pt.json` **+** apaga a linha `<p ... data-i18n="about.p4"></p>` no `index.html`
 
-> ⚠️ Para trocar o **texto** dos parágrafos existentes, só mexe no `pt.json`. Só edita o `index.html` se for **adicionar ou remover** um parágrafo (mudar a quantidade).
+> ⚠️ **Resumo: onde mexer?**
+> - **Trocar o texto** de um parágrafo que já existe → só `pt.json`
+> - **Adicionar ou remover** um parágrafo (mudar a quantidade) → `pt.json` **+** `index.html`
+> - **Refazer o Sobre inteiro** (mudar estrutura, quantidade de parágrafos, ordem) → `index.html` + `pt.json`
 
 ### Adicionar uma foto acadêmica (Registro)
 1. Suba a foto para `images/records/`
