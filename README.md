@@ -111,7 +111,7 @@ Troque qualquer um deles no mesmo arquivo, sem editar HTML.
 
 ### Adicionar trajetória ou projeto
 → Edite `data/content.js` (estrutura do item) + `locales/pt.json` (textos)
-→ Se quiser traduzir: edite `locales/en.json` e `locales/es.json` (opcional — sem traduzir, mostra PT)
+→ EN/ES são traduzidos automaticamente pelo GitHub Actions quando você altera pt.json
 
 ### Mudar cores ou fontes
 → Edite `styles.css` → bloco `:root`
@@ -196,21 +196,26 @@ PT, EN e ES ativos. Arquitetura permite adicionar qualquer idioma:
 
 Para esconder: remover do array. Para mudar padrão: trocar `languages.default`.
 
-### ⚠️ SISTEMA DE FALLBACK AUTOMÁTICO
+### 🌐 TRADUÇÃO AUTOMÁTICA (GitHub Actions)
 
-**Você só precisa editar `locales/pt.json`.**
+**Você só precisa editar `locales/pt.json`.** O resto é automático.
 
-Se `en.json` ou `es.json` não tiverem uma chave, o site **automaticamente mostra o texto em português** no lugar. Isso significa que:
+Quando você faz commit alterando `locales/pt.json`, o GitHub Actions traduz automaticamente para `en.json` e `es.json` usando a API MyMemory (gratuita, sem API key).
 
-- ✅ Você edita `pt.json` → o site funciona em todos os idiomas
-- ✅ Se quiser traduzir para inglês/espanhol, edita `en.json`/`es.json` quando tiver tempo
-- ✅ Se não traduzir, aparece o texto em PT (não quebra, não mostra vazio)
-- ✅ **Nunca** você precisa editar os 3 arquivos ao mesmo tempo
+- ✅ Você edita **só `pt.json`** → EN e ES são traduzidos automaticamente no deploy
+- ✅ Traduções manuais em `en.json`/`es.json` são **preservadas** (não sobrescritas)
+- ✅ Se você já traduziu algo à mão em `en.json`/`es.json`, o bot mantém sua versão
+- ✅ Aparece na aba **Actions** do GitHub: "Translate Locales"
 
-**Fluxo recomendado:**
+**Fluxo:**
 1. Edite `pt.json` (sempre)
-2. Se quiser, edite `en.json` e `es.json` (opcional, traduz quando quiser)
-3. Faça commit → site atualiza em todos os idiomas
+2. Faça commit → GitHub Actions traduz EN/ES automaticamente
+3. Site atualiza em todos os idiomas
+
+**Forçar re-tradução de tudo** (sobrescrever traduções manuais):
+- GitHub → Actions → "Translate Locales" → Run workflow → digite: `force`
+
+**Fallback de segurança:** se `en.json`/`es.json` não tiverem uma chave, o site mostra o texto em PT (implementado em `i18n.js`).
 
 ---
 
