@@ -1,41 +1,81 @@
 # ============================================
-# Workflow: Atualizar publicações a partir do Lattes
+# Workflow: Atualizar cache do Lattes
 # ============================================
 #
-# TODO: Este workflow é um placeholder.
-# Ainda não está ativo (não tem cron nem eventos).
-# 
-# PLANO:
-# Quando implementado, este workflow vai:
-# 1. Acessar o Currículo Lattes (ID: 5758630474226047)
-#    via API pública ou scraping do script Lattes
-# 2. Extrair produções bibliográficas
-# 3. Atualizar data/publications.js
-# 4. Fazer commit automático se houver mudanças
+# Este workflow NÃO faz scraping automático do Lattes.
+# O Lattes exige reCAPTCHA e não tem API pública.
 #
-# Para ativar, descomente o bloco "on:" abaixo
-# e implemente o script de extração.
+# O que este workflow FAZ:
+# - Verifica se data/lattes_cache.json foi atualizado
+# - Valida que não está vazio (nunca publica vazio)
+# - Se válido, mantém; se vazio, falha sem apagar
+#
+# Como atualizar os dados do Lattes:
+# 1. Localmente, rode: python3 scripts/lattes_export.py
+#    (ou exporte o XML do Lattes e rode: python3 scripts/lattes_export.py arquivo.xml)
+# 2. Revise data/lattes_cache.json
+# 3. Faça commit e push
+# 4. O site usa o cache automaticamente
+#
+# Para rodar manualmente no GitHub Actions:
+# - Vá em Actions > "Update Lattes Cache" > "Run workflow"
 # ============================================
 
-name: Update Lattes Publications
+name: Update Lattes Cache
 
-# TODO: descomente para ativar
-# on:
-#   schedule:
-#     - cron: '0 0 1 * *'  # todo dia 1 do mês
-#   workflow_dispatch:       # permitir executar manualmente
+on:
+  workflow_dispatch:  # só executa manualmente
+  push:
+    paths:
+      - 'data/lattes_cache.json'
 
 jobs:
-  update-publications:
+  validate:
     runs-on: ubuntu-latest
-    if: false  # desativado até implementar
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # TODO: implementar extração do Lattes
-      # - name: Fetch Lattes data
-      #   run: python scripts/fetch_lattes.py 5758630474226047
+      - name: Validate Lattes cache
+        run: |
+          if [ ! -f data/lattes_cache.json ]; then
+            echo "ℹ Cache do Lattes não existe. Use scripts/lattes_export.py para gerar."
+            exit 0
+          fi
 
-      - name: Placeholder
-        run: echo "Workflow desativado — aguardando implementação do scraper Lattes"
+          # Verificar se o JSON é válido
+          if ! python3 -c "import json; json.load(open('data/lattes_cache.json'))" 2>/dev/null; then
+            echo "✗ Cache inválido (JSON corrompido). Preservando versão anterior."
+            exit 1
+          fi
+
+          # Verificar se não está vazio
+          EMPTY=$(python3 -c "
+          import json
+          data = json.load(open('data/lattes_cache.json'))
+          has_content = any(data.get(k) for k in ['education', 'projects', 'publications', 'trajectory'])
+          print('false' if has_content else 'true')
+          ")
+
+          if [ "$EMPTY" = "true" ]; then
+            echo "✗ Cache vazio detectado. NÃO publicando resultado vazio."
+            exit 1
+          fi
+
+          echo "✓ Cache do Lattes válido e não-vazio."
+
+      - name: Show cache info
+        run: |
+          if [ -f data/lattes_cache.json ]; then
+            python3 -c "
+          import json
+          data = json.load(open('data/lattes_cache.json'))
+          meta = data.get('_meta', {})
+          print(f\"  Exportado em: {meta.get('exported_at', 'desconhecido')}\")
+          print(f\"  Lattes ID: {meta.get('lattes_id', 'desconhecido')}\")
+          print(f\"  Formação: {len(data.get('education', []))} entradas\")
+          print(f\"  Trajetória: {len(data.get('trajectory', []))} entradas\")
+          print(f\"  Projetos: {len(data.get('projects', []))} entradas\")
+          print(f\"  Publicações: {len(data.get('publications', []))} entradas\")
+          "
+          fi
