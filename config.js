@@ -23,7 +23,7 @@ var SITE_CONFIG = {
 
   // --- Identidade ---
   name: "Lídia Belas",
-  photo: "assets/profile.jpg",  // coloque sua foto aqui. se não existir, não mostra.
+  photo: "images/profile/profile.jpg",  // coloque sua foto em images/profile/profile.jpg
 
   // --- Links (vazio = não mostra) ---
   email: "",           // TODO: inserir e-mail de contato quando disponível
@@ -37,7 +37,12 @@ var SITE_CONFIG = {
     role: "Bolsista pesquisadora",
     lab: "Laboratório de Humanidades Digitais da UFBA",
     labShort: "LABHDUFBA",
-    period: "2025 — atual"
+    period: "2025 — atual",
+    // Logo do laboratório: coloque a imagem em images/institutions/labhdufba.png
+    // Se não existir, o texto aparece normalmente sem imagem quebrada.
+    logo: "images/institutions/labhdufba.png",
+    // Link oficial do laboratório (vazio = logo não é clicável)
+    url: ""  // TODO: inserir URL oficial do LABHDUFBA quando disponível
   },
 
   // --- Formação ---

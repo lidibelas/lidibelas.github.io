@@ -7,6 +7,7 @@
   "nav.about": "About",
   "nav.research": "Research",
   "nav.trajectory": "Trajectory",
+  "nav.records": "Records",
   "nav.projects": "Projects",
   "nav.publications": "Publications",
   "nav.methods": "Methods",
@@ -19,9 +20,10 @@
   "hero.email": "Email",
 
   "about.label": "About",
-  "about.bio1": "I am an undergraduate student in Social Sciences at the Federal University of Bahia (UFBA), with a bachelor's degree in Anthropology. My research is situated in the field of Digital Anthropology, focusing on gender, technology, and online sociability.",
-  "about.bio2": "I am a research fellow at UFBA's Digital Humanities Laboratory (LABHDUFBA), where I conduct PIBIC research.",
-  "about.bio3": "My research agenda centers on online misogyny in games and gamer communities, investigated through an anthropological approach. I am interested in digital cultures and communities, the forms of sociability that emerge online, and the ways gender and technology intertwine in the everyday experience of platforms and games.",
+  "about.p1": "I am an undergraduate student in Social Sciences at the Federal University of Bahia (UFBA), in the bachelor's program in Anthropology. My interest in the Humanities, however, began before university. I grew up in a family of teachers in the field and, especially from high school onward, I realized that this was where I wanted to build my path.",
+  "about.p2": "A particularly important experience in this journey was my time at the Federal Institute of Education, Science and Technology of Bahia (IFBA), Simões Filho campus, where I attended high school integrated with a technical course in Metallurgy. I completed high school but not the technical course, due to disruptions caused by the Covid-19 pandemic. Nonetheless, I consider my time at IFBA a fundamental part of my education, both for the experiences and for the people and relationships I built there.",
+  "about.p3": "My current interest in games and digital cultures also stems from a personal experience. I have been playing League of Legends since 2020, and my experience as a woman in a competitive gaming environment was marked by various situations of hostility and by the recurring perception that this space did not always recognize me as someone who belonged there. These experiences helped transform an everyday lived experience into a research question.",
+  "about.p4": "It is from these experiences that I have been building questions about gender, technology, sociability, belonging and conflict in digital environments, especially in games and gamer communities.",
   "about.affiliationLabel": "Institutional affiliation",
 
   "research.label": "Research agenda",
@@ -36,6 +38,8 @@
   "trajectory.pibic2025.desc": "Research project developed at LABHDUFBA/UFBA.",
   "trajectory.pibic2026.title": "New PIBIC project",
   "trajectory.pibic2026.desc": "Title, topic and description to be provided.",
+
+  "records.label": "In academic spaces",
 
   "projects.label": "Projects",
   "projects.desinformacao-saude.title": "PIBIC — Health disinformation, digital sociology, and political polarization in Brazil",

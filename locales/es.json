@@ -7,6 +7,7 @@
   "nav.about": "Sobre mí",
   "nav.research": "Investigación",
   "nav.trajectory": "Trayectoria",
+  "nav.records": "Registros",
   "nav.projects": "Proyectos",
   "nav.publications": "Producción",
   "nav.methods": "Métodos",
@@ -19,9 +20,10 @@
   "hero.email": "Correo",
 
   "about.label": "Sobre mí",
-  "about.bio1": "Soy estudiante de Ciencias Sociales en la Universidad Federal de Bahía (UFBA), con bachillerato en Antropología. Mi investigación se inscribe en el campo de la Antropología Digital, con foco en género, tecnología y sociabilidad en línea.",
-  "about.bio2": "Soy becaria investigadora del Laboratorio de Humanidades Digitales de la UFBA — LABHDUFBA, donde desarrollo investigación de iniciación científica (PIBIC).",
-  "about.bio3": "Mi agenda de investigación se centra en la misoginia en línea en juegos y comunidades de jugadores, investigada desde un abordaje antropológico. Me interesan las culturas y comunidades digitales, las formas de sociabilidad que se constituyen en línea, y los modos en que el género y la tecnología se entrelazan en la experiencia cotidiana de plataformas y juegos.",
+  "about.p1": "Soy estudiante de Ciencias Sociales en la Universidad Federal de Bahía (UFBA), en el bachillerato en Antropología. Mi interés por las Humanidades, sin embargo, comenzó antes de la universidad. Crecí en una familia de profesores del área y, sobre todo a partir de la enseñanza media, fui percibiendo que era en este campo donde quería construir mi trayectoria.",
+  "about.p2": "Una experiencia especialmente importante en este recorrido fue mi paso por el Instituto Federal de Educación, Ciencia y Tecnología de Bahía (IFBA), campus Simões Filho, donde cursé la enseñanza media integrada al curso técnico en Metalurgia. Concluí la enseñanza media, pero no el curso técnico, debido a las interrupciones provocadas por la pandemia de Covid-19. Aun así, considero el período en el IFBA una parte fundamental de mi formación, tanto por las experiencias como por las personas y relaciones que construí allí.",
+  "about.p3": "Mi interés actual por los juegos y las culturas digitales también nace de una experiencia personal. Juego League of Legends desde 2020, y mi experiencia como mujer en un ambiente de juego competitivo estuvo marcada por diferentes situaciones de hostilidad y por la percepción recurrente de que aquel espacio no siempre me reconocía como alguien que debería estar ahí. Estas experiencias ayudaron a transformar una vivencia cotidiana en una cuestión de investigación.",
+  "about.p4": "Es a partir de estas experiencias que vengo construyendo preguntas sobre género, tecnología, sociabilidad, pertenencia y conflicto en entornos digitales, especialmente en juegos y comunidades de jugadores.",
   "about.affiliationLabel": "Vínculo institucional",
 
   "research.label": "Agenda de investigación",
@@ -36,6 +38,8 @@
   "trajectory.pibic2025.desc": "Proyecto de iniciación científica desarrollado en el contexto del LABHDUFBA/UFBA.",
   "trajectory.pibic2026.title": "Nuevo proyecto PIBIC",
   "trajectory.pibic2026.desc": "Título, tema y descripción a proporcionar.",
+
+  "records.label": "En espacios académicos",
 
   "projects.label": "Proyectos",
   "projects.desinformacao-saude.title": "PIBIC — Desinformación en salud, sociología digital y polarización política en Brasil",

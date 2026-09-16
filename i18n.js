@@ -14,6 +14,7 @@
 
   var config = (typeof SITE_CONFIG !== 'undefined') ? SITE_CONFIG : { languages: { active: ['pt'], default: 'pt' } };
   var content = (typeof SITE_CONTENT !== 'undefined') ? SITE_CONTENT : { trajectory: [], projects: [], methods: [], tools: [], publications: [] };
+  var records = (typeof SITE_RECORDS !== 'undefined') ? SITE_RECORDS : [];
 
   var SUPPORTED = config.languages.active || ['pt'];
   var DEFAULT_LANG = config.languages.default || 'pt';
@@ -87,6 +88,7 @@
     renderAbout(t);
     renderResearchKeywords(t);
     renderTimeline(t);
+    renderRecords(t);
     renderProjects(t);
     renderPublications(t);
     renderMethods(t);
@@ -102,6 +104,7 @@
       { id: 'about', key: 'nav.about' },
       { id: 'research', key: 'nav.research' },
       { id: 'trajectory', key: 'nav.trajectory' },
+      { id: 'records', key: 'nav.records' },
       { id: 'projects', key: 'nav.projects' },
       { id: 'publications', key: 'nav.publications' },
       { id: 'methods', key: 'nav.methods' },
@@ -110,7 +113,6 @@
     var html = '';
     sections.forEach(function (s) {
       var el = document.getElementById(s.id);
-      // Só mostrar no menu se a seção existe e NÃO está hidden
       if (el && !el.hasAttribute('hidden')) {
         html += '<a href="#' + s.id + '">' + (t[s.key] || s.id) + '</a>';
       }
@@ -144,11 +146,12 @@
     container.innerHTML = html;
   }
 
+  // --- About: photo + personal text + affiliation with logo ---
+
   function renderAbout(t) {
-    // Photo
+    // Photo — detect existence, hide gracefully if not present
     var photoEl = document.getElementById('about-photo');
     if (photoEl && config.photo) {
-      // Verificar se a foto existe tentando carregar
       var img = new Image();
       img.onload = function () {
         photoEl.innerHTML = '<img src="' + config.photo + '" alt="Lídia Belas" class="about-photo-img">';
@@ -162,13 +165,40 @@
       photoEl.style.display = 'none';
     }
 
-    // Affiliation
+    // Affiliation block with optional logo
     var affEl = document.getElementById('about-affiliation');
     if (affEl && config.affiliation) {
       var aff = config.affiliation;
-      var html = '<div class="aff-line">' + (t['about.affiliationLabel'] || 'Vínculo institucional') + '</div>';
-      html += '<div class="aff-role">' + aff.role + ' · ' + aff.lab + ' (' + (aff.labShort || '') + ')</div>';
-      html += '<div class="aff-line">' + aff.period + '</div>';
+      var html = '<div class="aff-block">';
+      
+      // Logo (if exists)
+      if (aff.logo) {
+        var logoImg = new Image();
+        logoImg.onload = function () {
+          var logoHtml = '';
+          if (aff.url) {
+            logoHtml = '<a href="' + aff.url + '" target="_blank" rel="noopener" class="aff-logo-link">';
+            logoHtml += '<img src="' + aff.logo + '" alt="' + (aff.labShort || 'LABHDUFBA') + '" class="aff-logo">';
+            logoHtml += '</a>';
+          } else {
+            logoHtml = '<img src="' + aff.logo + '" alt="' + (aff.labShort || 'LABHDUFBA') + '" class="aff-logo">';
+          }
+          var logoContainer = document.getElementById('aff-logo-slot');
+          if (logoContainer) logoContainer.innerHTML = logoHtml;
+        };
+        logoImg.onerror = function () {
+          var logoContainer = document.getElementById('aff-logo-slot');
+          if (logoContainer) logoContainer.style.display = 'none';
+        };
+        logoImg.src = aff.logo;
+        html += '<div class="aff-logo-slot" id="aff-logo-slot"></div>';
+      }
+
+      html += '<div class="aff-line">' + (t['about.affiliationLabel'] || 'Vínculo institucional') + '</div>';
+      html += '<div class="aff-role">' + aff.role + '</div>';
+      html += '<div class="aff-lab">' + aff.lab + ' (' + (aff.labShort || '') + ')</div>';
+      html += '<div class="aff-period">' + aff.period + '</div>';
+      html += '</div>';
       affEl.innerHTML = html;
     }
   }
@@ -202,6 +232,63 @@
         '<p>' + (t[descKey] || item.desc) + '</p>' +
         '</div></div>';
     }).join('');
+  }
+
+  // --- Records (Registros da trajetória) ---
+
+  function renderRecords(t) {
+    var container = document.getElementById('records-container');
+    var section = document.getElementById('records');
+    if (!container || !section) return;
+    if (records.length === 0) {
+      hideSection('records');
+      return;
+    }
+    section.removeAttribute('hidden');
+
+    // Assymetric layout: first record is "featured" (larger), rest are smaller
+    var html = '<div class="records-grid">';
+    records.forEach(function (r, i) {
+      var isFeatured = (i === 0 && records.length > 1);
+      var cls = isFeatured ? 'record-card record-featured' : 'record-card';
+      
+      // Detect if image exists; if not, skip this record entirely
+      // (image check happens at render time — if 404, the card is hidden)
+      var cardId = 'record-' + i;
+      
+      html += '<figure class="' + cls + ' reveal" id="' + cardId + '">';
+      html += '<div class="record-image-wrap">';
+      if (r.link) {
+        html += '<a href="' + r.link + '" target="_blank" rel="noopener">';
+      }
+      html += '<img src="' + r.image + '" alt="' + (r.alt || r.title || '') + '" class="record-img" loading="lazy">';
+      if (r.link) {
+        html += '</a>';
+      }
+      html += '</div>';
+      html += '<figcaption class="record-caption">';
+      if (r.title) html += '<div class="record-title">' + r.title + '</div>';
+      var meta = '';
+      if (r.context) meta += r.context;
+      if (r.year) meta += (meta ? ' · ' : '') + r.year;
+      if (meta) html += '<div class="record-meta">' + meta + '</div>';
+      if (r.caption) html += '<p class="record-desc">' + r.caption + '</p>';
+      html += '</figcaption>';
+      html += '</figure>';
+    });
+    html += '</div>';
+
+    container.innerHTML = html;
+
+    // Hide cards whose image failed to load
+    records.forEach(function (r, i) {
+      var check = new Image();
+      check.onerror = function () {
+        var card = document.getElementById('record-' + i);
+        if (card) card.style.display = 'none';
+      };
+      check.src = r.image;
+    });
   }
 
   function renderProjects(t) {
@@ -281,7 +368,6 @@
     var container = document.getElementById('contact-container');
     var section = document.getElementById('contact');
     if (!container || !section) return;
-    // SÓ mostrar se tiver email
     if (!config.email) {
       hideSection('contact');
       return;
@@ -304,13 +390,11 @@
     el.textContent = '© ' + year + ' ' + config.name + ' · ' + (config.affiliation ? config.affiliation.labShort : '');
   }
 
-  // --- Hide section (section + nav item) ---
   function hideSection(id) {
     var section = document.getElementById(id);
     if (section) section.setAttribute('hidden', '');
   }
 
-  // --- Scroll reveal ---
   function observeReveals() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
@@ -327,9 +411,8 @@
     document.querySelectorAll('.reveal:not(.visible)').forEach(function (el) { obs.observe(el); });
   }
 
-  // --- Init ---
   function addRevealClass() {
-    document.querySelectorAll('.section-header, .timeline-item, .project-card, .pub-entry, .method-group, .hero-inner > *').forEach(function (el) {
+    document.querySelectorAll('.section-header, .timeline-item, .project-card, .pub-entry, .method-group, .record-card, .hero-inner > *').forEach(function (el) {
       if (!el.classList.contains('reveal')) el.classList.add('reveal');
     });
   }
