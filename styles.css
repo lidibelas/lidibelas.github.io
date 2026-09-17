@@ -285,7 +285,7 @@ body {
   border-radius: var(--radius);
   filter: grayscale(15%);
 }
-.about-text { }
+.about-text { text-align: justify; }
 .about-closing {
   margin-top: 28px;
   padding-top: 24px;
