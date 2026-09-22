@@ -223,4 +223,11 @@ O site é publicado pelo **GitHub Pages** a cada commit na branch `main`. Deploy
 
 ## Licença
 
-Conteúdo: © Lídia Belas. Código: MIT.
+- **Código** (HTML, CSS, JS, configuração): [MIT](LICENSE)
+- **Conteúdo** (textos, fotos, dados acadêmicos): © Lídia Belas. Todos os direitos reservados.
+
+---
+
+## Contribuindo
+
+Encontrou um bug ou tem uma sugestão? Veja o [guia de contribuição](CONTRIBUTING.md) ou abra uma [Issue](https://github.com/lidibelas/lidibelas.github.io/issues).
